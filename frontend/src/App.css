@@ -1,0 +1,395 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #333333;
+  --accent-color: #666666;
+  --active-color: #1a7d36;
+  --active-text-color: #085020;
+  --error-color: #cc0000;
+  --background-color: #ffffff;
+  --panel-background: #ffffff;
+  --border-color: #eeeeee;
+  --text-color: #222222;
+  --text-light: #666666;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --hover-color: #f9f9f9;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #fafafa;
+  color: var(--text-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-weight: 500;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.15s ease;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+  border-color: #dedede;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  text-align: left;
+  box-shadow: var(--shadow);
+}
+
+.app-header h1 {
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  font-size: 22px;
+}
+
+.app-header p {
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-xl);
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .app-main {
+    flex-direction: column;
+    padding: var(--spacing-md);
+  }
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.left-panel {
+  max-width: 450px;
+}
+
+.input-panel, .result-path, .tree-viewer-container {
+  background-color: var(--panel-background);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--border-color);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h3 {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.3px;
+}
+
+.example-selector select, .sample-input-selector select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: white;
+  font-size: 14px;
+  color: var(--text-color);
+  min-width: 150px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+  padding-right: 24px;
+}
+
+.example-selector label, .sample-input-selector label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.json-editor-container {
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: #fefefe;
+  overflow: hidden;
+}
+
+.button-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.primary-button {
+  background-color: var(--active-color);
+  color: white;
+  border-color: var(--active-color);
+  font-weight: 500;
+}
+
+.primary-button:hover {
+  background-color: var(--active-text-color);
+  border-color: var(--active-text-color);
+}
+
+.secondary-button {
+  background-color: white;
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.secondary-button:hover {
+  background-color: var(--hover-color);
+}
+
+.export-button {
+  background-color: white;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 13px;
+}
+
+.export-button:hover {
+  background-color: var(--hover-color);
+}
+
+button:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  border-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: var(--error-color);
+  margin: var(--spacing-sm) 0;
+  padding: var(--spacing-sm);
+  background-color: rgba(204, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  border-left: 2px solid var(--error-color);
+}
+
+.path-summary, .final-node, .unreachable-results {
+  background-color: #fafafa;
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--border-color);
+}
+
+.path-summary h4, .final-node h4, .unreachable-results h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.path-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.path-node {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.node-index {
+  background-color: var(--active-color);
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.node-id {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.path-arrow {
+  color: var(--active-color);
+  font-size: 12px;
+  margin: 0 var(--spacing-xs);
+  font-weight: 500;
+}
+
+.node-details p {
+  margin-bottom: var(--spacing-xs);
+  font-size: 14px;
+}
+
+.unreachable-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.unreachable-node {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--text-color);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  border: 1px solid var(--border-color);
+}
+
+.empty-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 14px;
+}
+
+.loading-indicator {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background-color: #000;
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.error-notification {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background-color: var(--error-color);
+  color: white;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  max-width: 400px;
+}
+
+.error-notification p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.error-notification button {
+  background-color: white;
+  color: var(--error-color);
+  font-size: 12px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-weight: 500;
+}
+
+.tree-viewer-container {
+  height: 100%;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--spacing-sm);
+  position: relative;
+}
+
+.center-tree-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: var(--shadow);
+  transition: all 0.15s ease;
+}
+
+.center-tree-button:hover {
+  background-color: white;
+  border-color: var(--active-color);
+  color: var(--active-color);
+}
+
+.center-tree-button svg {
+  stroke: currentColor;
+}
+
+/* Add keyframe animation for pulse effect on active path */
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
+} 

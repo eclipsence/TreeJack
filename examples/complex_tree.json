@@ -1,0 +1,244 @@
+{
+  "root": {
+    "node_id": "start",
+    "text": "Loan Application Evaluation",
+    "condition": null,
+    "children": [
+      {
+        "node_id": "initial_screening",
+        "text": "Initial Screening",
+        "condition": "input.has_applied_before != True",
+        "children": [
+          {
+            "node_id": "age_verification",
+            "text": "Age Verification",
+            "condition": "input.age >= 21",
+            "children": [
+              {
+                "node_id": "income_evaluation",
+                "text": "Income Evaluation",
+                "condition": "input.annual_income >= 45000",
+                "children": [
+                  {
+                    "node_id": "credit_score_check",
+                    "text": "Credit Score Evaluation",
+                    "condition": "input.credit_score >= 650",
+                    "children": [
+                      {
+                        "node_id": "debt_ratio_check",
+                        "text": "Debt-to-Income Ratio Evaluation",
+                        "condition": "input.debt_to_income_ratio < 0.4",
+                        "children": [
+                          {
+                            "node_id": "employment_verification",
+                            "text": "Employment Verification",
+                            "condition": "input.employment_years >= 2",
+                            "children": [
+                              {
+                                "node_id": "loan_amount_check",
+                                "text": "Loan Amount Evaluation",
+                                "condition": "input.loan_amount <= input.annual_income * 0.8",
+                                "children": [
+                                  {
+                                    "node_id": "approved_high_priority",
+                                    "text": "Approved - High Priority",
+                                    "condition": "input.credit_score >= 750 and input.employment_years >= 5",
+                                    "children": []
+                                  },
+                                  {
+                                    "node_id": "approved_medium_priority",
+                                    "text": "Approved - Medium Priority",
+                                    "condition": "input.credit_score >= 700",
+                                    "children": []
+                                  },
+                                  {
+                                    "node_id": "approved_low_priority",
+                                    "text": "Approved - Low Priority",
+                                    "condition": null,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "node_id": "loan_amount_too_high",
+                                "text": "Rejected - Loan Amount Too High",
+                                "condition": null,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "node_id": "employment_too_short",
+                            "text": "Employment History Too Short",
+                            "condition": null,
+                            "children": [
+                              {
+                                "node_id": "exception_review",
+                                "text": "Exception Review",
+                                "condition": "input.has_collateral == True and input.credit_score >= 720",
+                                "children": [
+                                  {
+                                    "node_id": "approved_with_exceptions",
+                                    "text": "Approved with Exceptions",
+                                    "condition": null,
+                                    "children": []
+                                  }
+                                ]
+                              },
+                              {
+                                "node_id": "rejected_short_employment",
+                                "text": "Rejected - Insufficient Employment History",
+                                "condition": null,
+                                "children": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "node_id": "debt_ratio_too_high",
+                        "text": "Rejected - Debt Ratio Too High",
+                        "condition": null,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "node_id": "credit_score_too_low",
+                    "text": "Credit Score Below Threshold",
+                    "condition": null,
+                    "children": [
+                      {
+                        "node_id": "guarantor_option",
+                        "text": "Guarantor Option",
+                        "condition": "input.has_guarantor == True",
+                        "children": [
+                          {
+                            "node_id": "guarantor_evaluation",
+                            "text": "Guarantor Evaluation",
+                            "condition": "input.guarantor_credit_score >= 700",
+                            "children": [
+                              {
+                                "node_id": "approved_with_guarantor",
+                                "text": "Approved with Guarantor",
+                                "condition": null,
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "node_id": "guarantor_rejected",
+                            "text": "Guarantor Rejected",
+                            "condition": null,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "node_id": "credit_score_rejected",
+                        "text": "Rejected - Low Credit Score",
+                        "condition": null,
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "node_id": "income_too_low",
+                "text": "Income Below Threshold",
+                "condition": null,
+                "children": [
+                  {
+                    "node_id": "cosigner_option",
+                    "text": "Co-signer Option",
+                    "condition": "input.has_cosigner == True",
+                    "children": [
+                      {
+                        "node_id": "cosigner_evaluation",
+                        "text": "Co-signer Evaluation",
+                        "condition": "input.cosigner_income >= 60000 and input.cosigner_credit_score >= 680",
+                        "children": [
+                          {
+                            "node_id": "approved_with_cosigner",
+                            "text": "Approved with Co-signer",
+                            "condition": null,
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "node_id": "cosigner_rejected",
+                        "text": "Co-signer Rejected",
+                        "condition": null,
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "node_id": "income_rejected",
+                    "text": "Rejected - Insufficient Income",
+                    "condition": null,
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "node_id": "under_age",
+            "text": "Rejected - Below Minimum Age",
+            "condition": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "node_id": "previous_applicant",
+        "text": "Previous Applicant Review",
+        "condition": null,
+        "children": [
+          {
+            "node_id": "previous_application_check",
+            "text": "Previous Application Status Check",
+            "condition": "input.previous_application_status == 'completed'",
+            "children": [
+              {
+                "node_id": "time_since_previous",
+                "text": "Time Since Previous Application",
+                "condition": "input.months_since_previous >= 6",
+                "children": [
+                  {
+                    "node_id": "escalate_to_manager",
+                    "text": "Escalate to Manager Review",
+                    "condition": null,
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "node_id": "rejected_too_recent",
+                "text": "Rejected - Too Recent Previous Application",
+                "condition": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "node_id": "incomplete_previous",
+            "text": "Previous Application Incomplete",
+            "condition": null,
+            "children": [
+              {
+                "node_id": "restart_application",
+                "text": "Restart Application Process",
+                "condition": null,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+} 

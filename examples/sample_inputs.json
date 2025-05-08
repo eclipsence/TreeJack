@@ -1,0 +1,114 @@
+[
+  {
+    "name": "High Priority Approval Path",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 30,
+      "annual_income": 95000,
+      "credit_score": 780,
+      "debt_to_income_ratio": 0.25,
+      "employment_years": 6,
+      "loan_amount": 70000
+    }
+  },
+  {
+    "name": "Medium Priority Approval Path",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 27,
+      "annual_income": 65000,
+      "credit_score": 720,
+      "debt_to_income_ratio": 0.3,
+      "employment_years": 3,
+      "loan_amount": 45000
+    }
+  },
+  {
+    "name": "Low Priority Approval Path",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 23,
+      "annual_income": 50000,
+      "credit_score": 680,
+      "debt_to_income_ratio": 0.35,
+      "employment_years": 2,
+      "loan_amount": 30000
+    }
+  },
+  {
+    "name": "Approved with Exceptions Path",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 25,
+      "annual_income": 60000,
+      "credit_score": 730,
+      "debt_to_income_ratio": 0.3,
+      "employment_years": 1.5,
+      "has_collateral": true
+    }
+  },
+  {
+    "name": "Approved with Guarantor Path",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 22,
+      "annual_income": 48000,
+      "credit_score": 620,
+      "debt_to_income_ratio": 0.3,
+      "employment_years": 2,
+      "loan_amount": 25000,
+      "has_guarantor": true,
+      "guarantor_credit_score": 750
+    }
+  },
+  {
+    "name": "Approved with Co-signer Path",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 24,
+      "annual_income": 40000,
+      "has_cosigner": true,
+      "cosigner_income": 75000,
+      "cosigner_credit_score": 740
+    }
+  },
+  {
+    "name": "Rejected - Loan Amount Too High",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 28,
+      "annual_income": 55000,
+      "credit_score": 700,
+      "debt_to_income_ratio": 0.3,
+      "employment_years": 3,
+      "loan_amount": 65000
+    }
+  },
+  {
+    "name": "Rejected - Low Credit Score",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 30,
+      "annual_income": 58000,
+      "credit_score": 580,
+      "has_guarantor": false
+    }
+  },
+  {
+    "name": "Previous Applicant Path",
+    "input_values": {
+      "has_applied_before": true,
+      "previous_application_status": "completed",
+      "months_since_previous": 8
+    }
+  },
+  {
+    "name": "Unreachable Path Test",
+    "input_values": {
+      "has_applied_before": false,
+      "age": 19,
+      "annual_income": 100000,
+      "credit_score": 800
+    }
+  }
+] 
