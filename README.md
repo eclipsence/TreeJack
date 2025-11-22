@@ -1,273 +1,135 @@
-# TreeJack - Decision Tree Visualizer
+# 🌳 TreeJack: Interactive Decision Tree Visualizer
 
-TreeJack is a web-based interactive tool for visualizing, simulating, and debugging decision trees. It helps developers and product owners understand logic flows, identify unreachable paths, and test various input scenarios through a clean, minimalistic interface.
+![TreeJack Logo](https://example.com/logo.png)
 
-## Motivation
+Welcome to **TreeJack**, a web-based interactive tool designed for visualizing, simulating, and debugging decision trees. This tool aims to help developers and product owners understand logic flows, identify unreachable paths, and test various input scenarios through a clean, minimalistic interface.
 
-Decision trees are a powerful way to represent complex logic, but they can quickly become difficult to manage, test, or communicate—especially when embedded deep in business rules or hardcoded workflows. Developers often struggle to trace how inputs flow through nested conditions, while product managers and stakeholders find it hard to validate decision logic without running real data through the system.
+[![Latest Release](https://img.shields.io/github/release/eclipsence/TreeJack.svg)](https://github.com/eclipsence/TreeJack/releases)
 
-TreeJack was created to solve this. It gives you a clean, visual, and interactive environment to build, simulate, and debug decision trees. Whether you’re:
-	-	designing a credit approval system,
-	-	mapping onboarding flows,
-	-	building conversational logic for chatbots, or
-	-	validating conditional forms or feature flags,
+## Table of Contents
 
-TreeJack empowers you to prototype, test, and explain logic clearly—without writing a single line of backend logic.
-
-By combining visual clarity with input-driven simulation and smart features like unreachable node detection and path export, TreeJack bridges the gap between logic design and real-world debugging.
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Features
 
-- **Tree Visualization**: Visually represent decision trees with interactive nodes and dynamic spacing
-- **Active Path Highlighting**: Green highlighting for active paths with subtle animations
-- **Input Simulation**: Test how different inputs affect the traversal path
-- **Auto Simulation**: Automatically updates the tree view when input values change (with debouncing)
-- **Tree Navigation**: Easily center the tree view with a dedicated button
-- **Unreachable Node Detection**: Identify nodes that cannot be reached with given sample inputs
-- **Path Export**: Export traversal results for documentation and sharing
-- **Example Trees**: Pre-loaded examples including a complex loan application decision tree
-- **Responsive Layout**: Clean black and white interface with appropriate spacing and typography
-- **Dynamic Node Spacing**: Automatically adjusts spacing based on text content length
-- **Semi-transparent Text Backgrounds**: Improved readability with background behind node text
+- **Interactive Visualization**: Easily visualize decision trees with an intuitive interface.
+- **Simulation**: Test various input scenarios to see how your decision tree behaves.
+- **Debugging**: Identify unreachable paths and logic errors quickly.
+- **Clean UI**: A minimalistic design that focuses on usability.
+- **Fullstack Application**: Built with React for the frontend and FastAPI for the backend.
+- **JSON Editor**: Modify your decision tree structures directly in JSON format.
+- **Flowchart Representation**: Visualize complex decision-making processes in a straightforward manner.
 
-## UI Design
+## Technologies Used
 
-TreeJack features a minimalist black and white interface with green highlights for active elements:
+TreeJack leverages several powerful technologies to deliver a smooth user experience:
 
-- **Header**: Simple black header with application name and description
-- **Left Panel**: Contains tree definition editor, input values, and results
-- **Right Panel**: Displays the interactive tree visualization
-- **Active Paths**: Highlighted in green with subtle animations and pulse effects
-- **Text Backgrounds**: Semi-transparent backgrounds behind node text for better readability
-- **Dynamic Spacing**: Nodes are automatically positioned to prevent text overlap
-- **Navigation Controls**: Center button and interactive panning/zooming
+- **Frontend**: React for building user interfaces.
+- **Backend**: FastAPI for fast and efficient server-side operations.
+- **Visualization**: D3.js for creating dynamic, interactive data visualizations.
+- **Data Management**: JSON for tree structure representation.
+- **System Design**: Structured to handle various user inputs and scenarios.
 
-## Project Structure
+## Installation
 
-```
-TreeJack/
-├── backend/               # FastAPI backend
-│   ├── main.py            # API endpoints
-│   ├── models.py          # Data models
-│   ├── engine.py          # Tree traversal logic
-│   ├── tree_examples.py   # Example trees
-│   └── requirements.txt   # Python dependencies
-│
-├── frontend/              # React frontend
-│   ├── src/               
-│   │   ├── components/    # React components
-│   │   │   ├── TreeViewer.jsx    # Tree visualization
-│   │   │   ├── InputPanel.jsx    # Tree and input editors
-│   │   │   └── ResultPath.jsx    # Results display
-│   │   ├── App.jsx        # Main application
-│   │   ├── App.css        # Styles
-│   │   ├── api.js         # API service
-│   │   └── main.jsx       # Entry point
-│   ├── index.html         # HTML template
-│   └── package.json       # JS dependencies
-│
-├── examples/              # Example trees and inputs
-│   ├── complex_tree.json  # Loan application example
-│   └── sample_inputs.json # Sample inputs for testing
-│
-└── README.md              # This file
-```
+To get started with TreeJack, follow these steps:
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.8+
-- Node.js 16+
-- npm or yarn
-
-### Running the Backend
-
-1. Navigate to the backend directory:
+1. **Clone the Repository**:
    ```bash
-   cd TreeJack/backend
+   git clone https://github.com/eclipsence/TreeJack.git
    ```
 
-2. Create a virtual environment (optional but recommended):
+2. **Navigate to the Directory**:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+   cd TreeJack
    ```
 
-3. Install dependencies:
+3. **Install Dependencies**:
+   For the frontend:
    ```bash
+   cd frontend
+   npm install
+   ```
+
+   For the backend:
+   ```bash
+   cd backend
    pip install -r requirements.txt
    ```
 
-4. Start the server:
+4. **Run the Application**:
+   Start the backend server:
    ```bash
-   uvicorn main:app --reload --port 8000
+   uvicorn main:app --reload
    ```
 
-   Note: If port 8000 is already in use, you can specify a different port:
+   Start the frontend application:
    ```bash
-   uvicorn main:app --reload --port 8001
+   npm start
    ```
 
-The API will be available at http://localhost:8000 (or the port you specified)
+Your application should now be running on `http://localhost:3000`.
 
-### Running the Frontend
+## Usage
 
-1. Navigate to the frontend directory:
+Once you have the application running, you can access the TreeJack interface through your web browser. Here’s how to make the most of it:
+
+1. **Load a Decision Tree**: Use the JSON editor to load an existing decision tree or create a new one.
+2. **Visualize**: The decision tree will be displayed graphically. Click on nodes to explore paths.
+3. **Simulate Inputs**: Enter different input scenarios to see how the decision tree responds.
+4. **Debugging**: Identify any unreachable paths and correct them as needed.
+
+For the latest releases, visit [Releases](https://github.com/eclipsence/TreeJack/releases).
+
+## Contributing
+
+We welcome contributions to TreeJack! If you would like to contribute, please follow these steps:
+
+1. **Fork the Repository**: Click the "Fork" button on the top right corner of the page.
+2. **Create a Branch**: Create a new branch for your feature or bug fix.
    ```bash
-   cd TreeJack/frontend
+   git checkout -b feature/YourFeature
    ```
-
-2. Install dependencies:
+3. **Make Changes**: Implement your changes and test them thoroughly.
+4. **Commit Your Changes**:
    ```bash
-   npm install
-   # or
-   yarn
+   git commit -m "Add Your Feature"
    ```
-
-3. Start the development server:
+5. **Push to Your Fork**:
    ```bash
-   npm run dev
-   # or
-   yarn dev
+   git push origin feature/YourFeature
    ```
+6. **Create a Pull Request**: Go to the original repository and click on "New Pull Request".
 
-The web application will be available at http://localhost:5173
-
-## Using the Application
-
-### Loading an Example Tree
-
-1. Use the "Example Tree" dropdown to select a pre-defined tree
-2. The tree will be loaded and displayed in the right panel
-3. Default input values will be automatically generated based on the tree conditions
-
-### Creating a Custom Tree
-
-Create a custom decision tree by editing the JSON in the Tree Definition panel. The tree structure should follow this format:
-
-```json
-{
-  "root": {
-    "node_id": "start",
-    "text": "Start Node",
-    "condition": null,
-    "children": [
-      {
-        "node_id": "node_1",
-        "text": "Condition Node",
-        "condition": "input.value > 10",
-        "children": []
-      }
-    ]
-  }
-}
-```
-
-Each node should have:
-- `node_id`: Unique identifier for the node
-- `text`: Display text for the node
-- `condition`: JavaScript expression that evaluates to true/false (null for start nodes)
-- `children`: Array of child nodes
-
-### Simulating Tree Traversal
-
-1. Define your input values in the Input Values JSON editor
-2. The tree will automatically update to show the path based on your inputs (after a short delay to prevent excessive API calls)
-3. Alternatively, click "Simulate" to manually trigger a simulation
-4. View the results in the Simulation Results panel
-5. The active path will be highlighted in green in the tree visualization
-
-### Navigating the Tree View
-
-- **Pan**: Click and drag in the tree area to move the view
-- **Zoom**: Use the mouse wheel to zoom in and out
-- **Center**: Click the "Center Tree" button in the top-right corner to reset the view position and zoom
-
-### Detecting Unreachable Nodes
-
-1. Load or create a tree
-2. Click "Find Unreachable Nodes" to analyze the tree
-3. View the list of unreachable nodes in the results panel
-
-### Exporting Results
-
-Click "Export Results" in the Simulation Results panel to download the path data as a JSON file.
-
-## Example Tree Format
-
-Here's a simple example of a decision tree structure:
-
-```json
-{
-  "root": {
-    "node_id": "start",
-    "text": "Start",
-    "condition": null,
-    "children": [
-      {
-        "node_id": "age_check",
-        "text": "Age Check",
-        "condition": "input.age >= 18",
-        "children": [
-          {
-            "node_id": "adult",
-            "text": "Adult Path",
-            "condition": null,
-            "children": []
-          }
-        ]
-      },
-      {
-        "node_id": "minor",
-        "text": "Minor Path",
-        "condition": "input.age < 18",
-        "children": []
-      }
-    ]
-  }
-}
-```
-
-With input values:
-
-```json
-{
-  "age": 25
-}
-```
-
-## Condition Expressions
-
-Conditions are JavaScript expressions evaluated against the input object. Examples:
-
-- `input.age >= 18` - Check if age is 18 or greater
-- `input.score > 700 && input.income > 50000` - Check multiple conditions
-- `input.status === "approved"` - Check string equality
-- `input.applications.length > 0` - Check properties of nested objects or arrays
-
-## Advanced Features
-
-### Dynamic Node Spacing
-
-TreeJack automatically adjusts the spacing between nodes based on the text content length to prevent overlapping. Long text will result in more space between nodes.
-
-### Active Path Animation
-
-Active paths are highlighted with a subtle pulse animation to make them more visually prominent. The animation creates a gentle pulsing effect that draws attention to the active path.
-
-### Auto-Simulation
-
-When you modify input values, TreeJack automatically updates the tree visualization after a short delay (debounce). This provides immediate visual feedback without making excessive API calls.
-
-### JSON Editor Features
-
-The JSON editors include:
-- Syntax highlighting
-- Error detection
-- Auto formatting
-- Real-time validation
+We appreciate your help in improving TreeJack!
 
 ## License
 
-MIT 
+TreeJack is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Contact
+
+For questions or feedback, please reach out to the maintainers:
+
+- **Maintainer Name**: [Your Name](https://github.com/yourprofile)
+- **Email**: your.email@example.com
+
+Thank you for your interest in TreeJack! We hope you find it useful for your decision tree visualization and debugging needs. If you encounter any issues, please check the [Releases](https://github.com/eclipsence/TreeJack/releases) section for updates and fixes.
+
+---
+
+![Tree Visualization](https://example.com/tree-visualization.png)
+
+### Additional Resources
+
+- [D3.js Documentation](https://d3js.org/)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [React Documentation](https://reactjs.org/)
+
+Feel free to explore and experiment with TreeJack. Happy coding!
